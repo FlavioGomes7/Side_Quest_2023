@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
         public float speed = 5f; // Velocidade de movimento do objeto
 
         private Rigidbody2D rb;
+        [SerializeField] private Transform spawnPoint;
 
-        private void Awake()
+        private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
         }
@@ -24,9 +25,14 @@ public class PlayerMovement : MonoBehaviour
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb.velocity = movement * speed * Time.deltaTime;
 
-            // Olhar na direção do mouse
+            // Olhar na direï¿½ï¿½o do mouse
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (mousePosition - transform.position).normalized;
             transform.up = direction;
+        }
+
+        public void Death()
+        {
+            gameObject.transform.position = new Vector2(spawnPoint.position.x, spawnPoint.position.y);
         }
 }
