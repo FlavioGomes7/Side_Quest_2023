@@ -43,16 +43,19 @@ public class MenuManager : MonoBehaviour
         // Adiciona um ouvinte para o evento OnValueChanged do Slider
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
     }
-    //Muda para a cena de Jogo
+    //Menu Principal Botoes
+        //Botao q Inicia o Jogo (carrega a cena de Jogo)
     public void PlayButton() 
     {
         SceneManager.LoadScene("testeStart");
         Debug.Log("O jogo Iniciou");
     }
+        //Botao Configuracoes do Jogo, abre um menu para manipular o volume
     public void ConfigsButton()
     {
         volumeObject.SetActive(true);
     }
+        //Botao Sair do Jogo, sai do Jogo em Aplicações desktop e em WebGL ele apenas mantém na tela inicial
     public void QuitButton()
     {
         if (!isDesktop)
@@ -64,6 +67,7 @@ public class MenuManager : MonoBehaviour
             Application.Quit();
         }
     }
+    //Definir um Valor para o Volume e o Salva
     public void SetVolume(float volume)
     {
         volumeSlider.value = volume;
@@ -71,10 +75,12 @@ public class MenuManager : MonoBehaviour
         // Salva o valor do volume
         saveManager.SaveVolume(volume);
     }
+    //Executa a função Set Volume quando o Valor é alterado na função Slider
     public void OnVolumeChanged(float volume)
     {
         SetVolume(volume);
     }
+    //Função de Retorno Para o Menu Principal
     public void MenuPrincipal()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -87,11 +93,12 @@ public class MenuManager : MonoBehaviour
             volumeObject.SetActive(false);
         }
     }
+    //Função de Continuar para prosseguir com o Jogo Pausado, apenas desativa o Pause;
     public void ContinuarBtn()
     {
             volumeObject.SetActive(false);
     }
-
+    //Verifica a entrada da Tecla "P", e executa um das funçoes dependendo do estado de isPaused
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -106,18 +113,30 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
+    //Pausa o Jogo com Time.timeScale = 0f e ativa o menu de Pause
     private void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0f;
         volumeObject.SetActive(true);
     }
-
+    //Retoma o Jogo com Time.timeScale = 1f e Desativa o menu de Pause
     private void ResumeGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
-        volumeObject.SetActive(false);
-        // Adicione aqui qualquer código adicional que você queira executar quando o jogo for despausado
+        ContinuarBtn();
+    }
+    //Passa para o Proximo Nível, caso haja um proximo nivel
+    public void ProximoNivel()
+    {
+        if (SceneManager.sceneCountInBuildSettings == SceneManager.GetActiveScene().buildIndex +1)
+        {
+            Debug.Log("Acabou os Niveis, mas logo traremos mais!");
+        }
+        else {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
     }
 }
