@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/JoaoScene-Menu.unity
+    guid: 880d83c5aa73e094580d28431698ba1d
+  - enabled: 1
+    path: Assets/Scenes/testeStart.unity
+    guid: 6927a5f562423fb46b9db86b9a7afb15
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
