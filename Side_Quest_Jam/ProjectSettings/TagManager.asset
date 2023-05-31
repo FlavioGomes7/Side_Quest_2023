@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Inimigo
+  - Arvore
   layers:
   - Default
   - TransparentFX
