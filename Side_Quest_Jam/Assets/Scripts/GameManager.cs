@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     private void CondicaoDerrota()
     {
-        if ((arvoresDerrubadas / (float)arvoresCena.Count) == percentualArvoresDerrubadas)
+        if ((arvoresDerrubadas / (float)arvoresCena.Count) >= percentualArvoresDerrubadas)
         {
             Time.timeScale = 0f;
             menuDerrota.SetActive(true);

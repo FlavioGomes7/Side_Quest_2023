@@ -4060,7 +4060,7 @@ MonoBehaviour:
   inimigosCena: []
   menuVitoria: {fileID: 1314951438}
   menuDerrota: {fileID: 284576029}
-  percentualArvoresDerrubadas: 0.2
+  percentualArvoresDerrubadas: 0.6
 --- !u!4 &2094185276
 Transform:
   m_ObjectHideFlags: 0
