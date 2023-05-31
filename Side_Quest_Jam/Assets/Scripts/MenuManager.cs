@@ -23,17 +23,18 @@ public class MenuManager : MonoBehaviour
     }
     void Start()
     {
+        Time.timeScale = 1f;
         volumeObject.SetActive(false);
-        //Verifica Qual Plataforma o Jogo esta em Execução
+        //Verifica Qual Plataforma o Jogo esta em Execuï¿½ï¿½o
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            // Código para ambiente WebGL
+            // Cï¿½digo para ambiente WebGL
             Debug.Log("Executando em WebGL");
             isDesktop = false;
         }
         else
         {
-            // Código para ambiente de desktop
+            // Cï¿½digo para ambiente de desktop
             Debug.Log("Executando em desktop");
             isDesktop = true;
         }
@@ -54,7 +55,7 @@ public class MenuManager : MonoBehaviour
     {
         volumeObject.SetActive(true);
     }
-        //Botao Sair do Jogo, sai do Jogo em Aplicações desktop e em WebGL ele apenas mantém na tela inicial
+        //Botao Sair do Jogo, sai do Jogo em Aplicaï¿½ï¿½es desktop e em WebGL ele apenas mantï¿½m na tela inicial
     public void QuitButton()
     {
         if (!isDesktop)
@@ -74,12 +75,12 @@ public class MenuManager : MonoBehaviour
         // Salva o valor do volume
         saveManager.SaveVolume(volume);
     }
-    //Executa a função Set Volume quando o Valor é alterado na função Slider
+    //Executa a funï¿½ï¿½o Set Volume quando o Valor ï¿½ alterado na funï¿½ï¿½o Slider
     public void OnVolumeChanged(float volume)
     {
         SetVolume(volume);
     }
-    //Função de Retorno Para o Menu Principal
+    //Funï¿½ï¿½o de Retorno Para o Menu Principal
     public void MenuPrincipal()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -92,12 +93,12 @@ public class MenuManager : MonoBehaviour
             volumeObject.SetActive(false);
         }
     }
-    //Função de Continuar para prosseguir com o Jogo Pausado, apenas desativa o Pause;
+    //Funï¿½ï¿½o de Continuar para prosseguir com o Jogo Pausado, apenas desativa o Pause;
     public void ContinuarBtn()
     {
             volumeObject.SetActive(false);
     }
-    //Verifica a entrada da Tecla "P", e executa um das funçoes dependendo do estado de isPaused
+    //Verifica a entrada da Tecla "P", e executa um das funï¿½oes dependendo do estado de isPaused
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -126,16 +127,17 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
         ContinuarBtn();
     }
-    //Passa para o Proximo Nível, caso haja um proximo nivel
+    //Passa para o Proximo Nï¿½vel, caso haja um proximo nivel
     public void ProximoNivel()
     {
         if (SceneManager.sceneCountInBuildSettings == SceneManager.GetActiveScene().buildIndex +1)
         {
             Debug.Log("Acabou os Niveis, mas logo traremos mais!");
         }
-        else {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Time.timeScale = 1f;
+        else 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+            
         }
         
     }

@@ -14,13 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
         [SerializeField]private Rigidbody2D rb;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private GameObject enemy;
 
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            
-    }
+            Inimigo = GameObject.FindGameObjectsWithTag("Inimigo");
+        }
 
         private void FixedUpdate()
         {
