@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             float distance;
             distance = Vector3.Distance(gameObject.transform.position, EnemyCloser().transform.position);
 
-            if(distance < 3 && Input.GetButtonUp("Fire1"))
+            if(distance < 3 && Input.GetButton("Fire1"))
             {
                 Destroy(EnemyCloser());
             }
