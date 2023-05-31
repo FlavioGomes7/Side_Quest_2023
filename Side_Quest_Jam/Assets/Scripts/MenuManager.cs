@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour
         //Botao q Inicia o Jogo (carrega a cena de Jogo)
     public void PlayButton() 
     {
-        SceneManager.LoadScene("testeStart");
+        SceneManager.LoadScene(1);
         Debug.Log("O jogo Iniciou");
     }
         //Botao Configuracoes do Jogo, abre um menu para manipular o volume
