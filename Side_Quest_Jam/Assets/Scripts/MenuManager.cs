@@ -23,7 +23,6 @@ public class MenuManager : MonoBehaviour
     }
     void Start()
     {
-        volumeObject.GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         volumeObject.SetActive(false);
         //Verifica Qual Plataforma o Jogo esta em Execução
         if (Application.platform == RuntimePlatform.WebGLPlayer)
@@ -136,6 +135,7 @@ public class MenuManager : MonoBehaviour
         }
         else {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Time.timeScale = 1f;
         }
         
     }

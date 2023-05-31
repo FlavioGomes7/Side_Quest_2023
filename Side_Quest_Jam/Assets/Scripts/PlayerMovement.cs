@@ -12,15 +12,15 @@ public class PlayerMovement : MonoBehaviour
 
         [SerializeField] private GameObject[] Inimigo;
 
-        private Rigidbody2D rb;
+        [SerializeField]private Rigidbody2D rb;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private GameObject enemy;
 
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-
-        }
+            
+    }
 
         private void FixedUpdate()
         {
