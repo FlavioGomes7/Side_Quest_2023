@@ -97,6 +97,7 @@ public class MenuManager : MonoBehaviour
     public void ContinuarBtn()
     {
             volumeObject.SetActive(false);
+            ResumeGame();
     }
     //Verifica a entrada da Tecla "P", e executa um das fun�oes dependendo do estado de isPaused
     void Update()
@@ -105,7 +106,7 @@ public class MenuManager : MonoBehaviour
         {
             if (isPaused)
             {
-                ResumeGame();
+                ContinuarBtn();
             }
             else
             {
@@ -125,7 +126,7 @@ public class MenuManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
-        ContinuarBtn();
+        
     }
     //Passa para o Proximo N�vel, caso haja um proximo nivel
     public void ProximoNivel()
