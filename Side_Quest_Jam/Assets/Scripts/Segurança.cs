@@ -47,6 +47,7 @@ public class Segurança : MonoBehaviour
         if (!this.agent.pathPending && !this.agent.hasPath)
         {
             this.agent.SetDestination(Random.insideUnitCircle.normalized * 3);
+            this.agent.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
     }
