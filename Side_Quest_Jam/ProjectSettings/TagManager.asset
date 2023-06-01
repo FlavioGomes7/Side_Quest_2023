@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Inimigo
   - Arvore
+  - Lenhador
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Arvores
-  - 
+  - Lenhador
   - 
   - 
   - 
