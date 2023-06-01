@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DestroyOnClick : MonoBehaviour
 {
+    private GameManager gameManager;
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Botão esquerdo do mouse
@@ -15,7 +20,12 @@ public class DestroyOnClick : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    Destroy(gameObject);
+                    if (gameObject.activeSelf)
+                    {
+                        gameManager.InimigosMorto();
+                        Destroy(gameObject);
+                    }
+                    
                 }
             }
         }
