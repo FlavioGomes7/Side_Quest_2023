@@ -6,9 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     //(Jow - adiçao)
     private GameManager gameManager;
+    private SaveManager saveManager;
     //-
     [SerializeField] private float speed = 5f; // Velocidade de movimento do objeto
     [SerializeField] private GameObject[] Inimigo;
+    private AudioSource playerAtackAudio;
     //(Jow - adiçao)
     private GameObject inimigoMorto;
     //-
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     //-
     private void Start()
     {
+        playerAtackAudio = GetComponent<AudioSource>();
+        saveManager = FindObjectOfType<SaveManager>().GetComponent<SaveManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         Inimigo = GameObject.FindGameObjectsWithTag("Inimigo");
@@ -37,16 +41,18 @@ public class PlayerMovement : MonoBehaviour
         if(!isStopped && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0))
         {
             animator.SetBool("IsWalking",true);
+            //SoundWalking(Jow)
+            
             // Movimento usando as teclas W, A, S e D
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
 
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rb.velocity = movement * speed * Time.deltaTime;
-
+            
         }
         else
-        {    
+        {
             animator.SetBool("IsWalking", false);
             
         }
@@ -54,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - transform.position).normalized;
         transform.up = direction;  
-        
-    
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -76,8 +80,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Inimigo") && isStopped)
         {
+            
             if (!inimigoMortoProcessado)
             {
+                playerAtackAudio.Play();
                 inimigoMortoProcessado = true;
                 gameManager.InimigosMorto();
             }

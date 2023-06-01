@@ -48,6 +48,7 @@ public class MenuManager : MonoBehaviour
     public void PlayButton() 
     {
         SceneManager.LoadScene(1);
+        saveManager.ChangeSoundMusic(1);
         Debug.Log("O jogo Iniciou");
     }
         //Botao Configuracoes do Jogo, abre um menu para manipular o volume
@@ -89,6 +90,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            saveManager.ChangeSoundMusic(0);
             SceneManager.LoadScene(0);
             volumeObject.SetActive(false);
         }
