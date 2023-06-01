@@ -31,7 +31,7 @@ public class Lenhador : MonoBehaviour
             Collider2D colisor = Physics2D.OverlapCircle(this.transform.position, this.raioVisao, treeLayer);
             if (colisor.CompareTag("Arvore"))
             {
-                Debug.Log("cortando por 5 min e dps eu paro");
+                Destroy(gameObject);
             }
         }     
     }
