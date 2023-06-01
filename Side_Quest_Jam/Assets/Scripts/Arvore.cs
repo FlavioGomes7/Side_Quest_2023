@@ -7,8 +7,10 @@ public class Arvore : MonoBehaviour
 {
     public float raioVisao;
 
-   
-    
+    public Sprite deadTree;
+    public Sprite spriteOrigin;
+
+
     public LayerMask treeLayer;
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,13 @@ public class Arvore : MonoBehaviour
         
         
        Collider2D colisor = Physics2D.OverlapCircle(this.transform.position, this.raioVisao, treeLayer);
-       if (colisor != null && colisor.CompareTag("Lenhador"))
+       if (colisor != null && colisor.CompareTag("Lenhador") && colisor.gameObject.GetComponent<Lenhador>().target == gameObject.transform)
        {
-          Debug.Log("trocar sprite depois de 5 min");
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = deadTree;
        }
-        else
+        //else
         {
-            Debug.Log("manter sprite original");
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteOrigin;
         }
         
     }

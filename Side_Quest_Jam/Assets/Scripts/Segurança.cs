@@ -6,58 +6,56 @@ using UnityEngine.AI;
 
 public class Segurança : MonoBehaviour
 {
-    private State state;
-    public NavMeshAgent agent;
-    public GameObject target;
-    public Transform visor; // Referência ao objeto do visor
+
+
+    private NavMeshAgent _agent;
+    private State _state;
+    private GameObject _target;
 
     [Header("Enemy Properties")]
     [SerializeField] private float _patrollingSpeed = 1f;
     [SerializeField] private float _followingSpeed = 3f;
-    [SerializeField] private float rotationSpeed; // Velocidade de rotação no eixo Z
+    
 
-    // Start is called before the first frame update
     void Start()
     {
-        var agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        this._agent = GetComponent<NavMeshAgent>();
+        this._agent.updateRotation = false;
+        this._agent.updateUpAxis = false;
 
-        this.state = State.Patroling;
+        this._state = State.Patroling;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        switch (state)
+        switch (_state)
         {
             case State.Following:
-                Follow(target);
+                Follow(_target);
                 break;
             default:
                 Patrol();
                 break;
         }
+         
     }
+
 
     private void Patrol()
     {
-        this.agent.speed = _patrollingSpeed;
+        this._agent.speed = _patrollingSpeed;
 
-        if (!this.agent.pathPending && !this.agent.hasPath)
+        if (!this._agent.pathPending && !this._agent.hasPath)
         {
-            this.agent.SetDestination(Random.insideUnitCircle.normalized * 3);
-            this.agent.transform.rotation = Quaternion.Euler(0, 0, 0);
+            this._agent.SetDestination(Random.insideUnitCircle.normalized * 3);
         }
-
     }
 
     private void Follow(GameObject target)
     {
-        this.agent.speed = _followingSpeed;
-        this.agent.SetDestination(target.transform.position);
+        this._agent.speed = _followingSpeed;
 
-      
+        this._agent.SetDestination(target.transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -66,8 +64,8 @@ public class Segurança : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                this.state = State.Following;
-                this.target = other.gameObject;
+                this._state = State.Following;
+                this._target = other.gameObject;
             }
         }
     }
@@ -78,11 +76,15 @@ public class Segurança : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                this.state = State.Patroling;
+                this._state = State.Patroling;
             }
         }
     }
 
-    enum State { Patroling, Following };
+   
+    enum State { Patroling, Following }
 
 }
+
+
+

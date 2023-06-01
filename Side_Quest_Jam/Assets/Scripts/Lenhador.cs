@@ -11,6 +11,7 @@ public class Lenhador : MonoBehaviour
     
     public NavMeshAgent agent;
     public Transform target;
+
     public LayerMask treeLayer;
     // Start is called before the first frame update
     void Start()
