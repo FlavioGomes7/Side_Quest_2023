@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
     private GameManager gameManager;
     private SaveManager saveManager;
     //-
-    [SerializeField] private float speed = 5f; // Velocidade de movimento do objeto
+    [SerializeField] private float speed; // Velocidade de movimento do objeto
     [SerializeField] private GameObject[] Inimigo;
     private AudioSource playerAtackAudio;
     //(Jow - adiçao)
     private GameObject inimigoMorto;
     //-
-    [SerializeField]private Rigidbody2D rb;
+    private Rigidbody2D rb;
     [SerializeField] private Transform spawnPoint;
     private Animator animator;
     private bool isStopped;
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Inimigo") && Input.GetButton("Fire1"))
+        if( (other.gameObject.CompareTag("Lenhador") && Input.GetButton("Fire1")) || (other.gameObject.CompareTag("Inimigo") && Input.GetButton("Fire1") ))
         {
             animator.SetBool("IsAttacking", true);
             isStopped = true;
@@ -78,15 +78,18 @@ public class PlayerMovement : MonoBehaviour
     //chama funcao Contabil de InimigosMortos de GameManager (Jow -adição)
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Inimigo") && isStopped)
+        if ((collision.gameObject.CompareTag("Lenhador") && isStopped))
         {
-            
             if (!inimigoMortoProcessado)
             {
                 playerAtackAudio.Play();
                 inimigoMortoProcessado = true;
                 gameManager.InimigosMorto();
             }
+        }
+        else if(collision.gameObject.CompareTag("Inimigo") && isStopped)
+        {
+            playerAtackAudio.Play();
         }
     }
 
