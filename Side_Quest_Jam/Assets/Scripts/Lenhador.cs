@@ -26,7 +26,7 @@ public class Lenhador : MonoBehaviour
     void Update()
     {
         
-        if (agent.remainingDistance < 1.9f)
+        if (agent.remainingDistance < 2f)
         {
             Collider2D colisor = Physics2D.OverlapCircle(this.transform.position, this.raioVisao, treeLayer);
             if (colisor.CompareTag("Arvore"))
