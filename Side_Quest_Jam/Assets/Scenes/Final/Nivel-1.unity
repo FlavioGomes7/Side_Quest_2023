@@ -2685,6 +2685,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4346912384180843248, guid: a74159392d9310d41ad3e36c49ae20fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4346912384180843251, guid: a74159392d9310d41ad3e36c49ae20fc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4351,6 +4355,10 @@ PrefabInstance:
     - target: {fileID: 1661737511669946985, guid: 0e9ff0a63ad7a3b43ba20874771866fd, type: 3}
       propertyPath: m_Name
       value: Lenhador
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661737511669946985, guid: 0e9ff0a63ad7a3b43ba20874771866fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1661737511669946988, guid: 0e9ff0a63ad7a3b43ba20874771866fd, type: 3}
       propertyPath: m_RootOrder

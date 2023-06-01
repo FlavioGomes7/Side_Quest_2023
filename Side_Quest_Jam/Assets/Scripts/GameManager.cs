@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             arvoresDerrubadasList.Add((arvore, false));
         }
 
-        GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
+        GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Lenhador");
         inimigosCena.AddRange(inimigos);
 
         arvoreNameDefault = arvoresCena[0].GetComponent<SpriteRenderer>().sprite.name;

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Arvore : MonoBehaviour
 {
     public float raioVisao;
+    private GameManager gameManager;
 
     public Sprite deadTree;
     public Sprite spriteOrigin;
@@ -15,7 +16,7 @@ public class Arvore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class Arvore : MonoBehaviour
        if (colisor != null && colisor.CompareTag("Lenhador") && colisor.gameObject.GetComponent<Lenhador>().target == gameObject.transform)
        {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = deadTree;
+            gameManager.ArvoreDerrubada();
        }
         //else
         {
