@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ArvoreDerrubada();
+        
         // Verificar apenas quando um objeto for removido
     }
 

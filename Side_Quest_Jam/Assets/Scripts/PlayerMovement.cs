@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-   
-    
+    //(Jow - adiçao)
+    private GameManager gameManager;
+    //-
     [SerializeField] private float speed = 5f; // Velocidade de movimento do objeto
-
     [SerializeField] private GameObject[] Inimigo;
-
+    //(Jow - adiçao)
+    private GameObject inimigoMorto;
+    //-
     [SerializeField]private Rigidbody2D rb;
     [SerializeField] private Transform spawnPoint;
     private Animator animator;
     private bool isStopped;
-
+    //(Jow - adiçao)
+    private bool inimigoMortoProcessado = false;
+    //-
     private void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         Inimigo = GameObject.FindGameObjectsWithTag("Inimigo");
         animator = GetComponent<Animator>();
@@ -60,6 +65,22 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsAttacking", true);
             isStopped = true;
             StartCoroutine(AttackAnim());
+            //(Jow - adiçao)
+            inimigoMorto =other.gameObject;
+            //-
+            
+        }
+    }
+    //chama funcao Contabil de InimigosMortos de GameManager (Jow -adição)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Inimigo") && isStopped)
+        {
+            if (!inimigoMortoProcessado)
+            {
+                inimigoMortoProcessado = true;
+                gameManager.InimigosMorto();
+            }
         }
     }
 
@@ -71,10 +92,15 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator AttackAnim()
     {
-        Destroy(EnemyCloser());
+        //Destroy(EnemyCloser());
         yield return new WaitForSecondsRealtime(0.6f);
+        Destroy(inimigoMorto);
         animator.SetBool("IsAttacking", false);
-        isStopped = false;            
+        isStopped = false;
+        //(Jow - adiçao)
+        inimigoMortoProcessado = false;
+        //-
+        
     }
 
         
