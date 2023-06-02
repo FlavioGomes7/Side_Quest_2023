@@ -11,6 +11,9 @@ public class EnemyShoot : MonoBehaviour
     private GameObject player;
     private float timer;
     private float distance;
+    private Vector2 targetPosition;
+    private Vector2 fowardNew;
+
 
 
     void Start()
@@ -20,6 +23,10 @@ public class EnemyShoot : MonoBehaviour
 
     void Update()
     {
+        targetPosition = player.transform.position;
+        fowardNew = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
+        transform.right = fowardNew;
+
         distance = Vector2.Distance(transform.position, player.transform.position);
         if(distance < distanceMin)
         {

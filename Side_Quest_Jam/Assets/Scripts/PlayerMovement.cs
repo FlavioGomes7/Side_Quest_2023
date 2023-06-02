@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(Input.GetAxisRaw("Horizontal"));
         Inimigo = GameObject.FindGameObjectsWithTag("Inimigo");
         
 
