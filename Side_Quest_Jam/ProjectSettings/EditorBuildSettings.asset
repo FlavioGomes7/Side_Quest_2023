@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JoaoScene-Menu.unity
+    path: "Assets/Scenes/In\xEDcio/JoaoScene-Menu.unity"
     guid: 880d83c5aa73e094580d28431698ba1d
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial 1.unity
+    guid: adc96dc56f4a29346aa55e00ae6a0134
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial 2.unity
+    guid: b559f69b9d9d61e40970d2cdc63a5689
   - enabled: 1
     path: Assets/Scenes/Final/Nivel-1.unity
     guid: 10d7e1c0119e8cd4c9bb29b60fa5e594
+  - enabled: 1
+    path: Assets/Scenes/Creditos/CreditosFinais.unity
+    guid: e6ec2ed67c802e74e8352cb04681934d
   - enabled: 0
     path: Assets/Scenes/Teste_Flavio.unity
     guid: 830816404e6d10a4c80c648710ce81bd

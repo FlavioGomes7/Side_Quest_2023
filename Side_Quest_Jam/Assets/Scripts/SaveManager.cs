@@ -27,10 +27,27 @@ public class SaveManager : MonoBehaviour
         {
             ChangeSoundMusic(0);
         }
-        else
+        else if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             ChangeSoundMusic(1);
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            ChangeSoundMusic(2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            ChangeSoundMusic(3);
+        }
+        else
+        {
+            ChangeSoundMusic(4);
+        }
+
+
+
+
+
     }
     public void ChangeSoundMusic(int indexSom)
     {

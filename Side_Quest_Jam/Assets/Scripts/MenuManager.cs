@@ -44,19 +44,19 @@ public class MenuManager : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
     }
     //Menu Principal Botoes
-        //Botao q Inicia o Jogo (carrega a cena de Jogo)
-    public void PlayButton() 
+    //Botao q Inicia o Jogo (carrega a cena de Jogo)
+    public void PlayButton()
     {
         SceneManager.LoadScene(1);
         saveManager.ChangeSoundMusic(1);
         Debug.Log("O jogo Iniciou");
     }
-        //Botao Configuracoes do Jogo, abre um menu para manipular o volume
+    //Botao Configuracoes do Jogo, abre um menu para manipular o volume
     public void ConfigsButton()
     {
         volumeObject.SetActive(true);
     }
-        //Botao Sair do Jogo, sai do Jogo em Aplica��es desktop e em WebGL ele apenas mant�m na tela inicial
+    //Botao Sair do Jogo, sai do Jogo em Aplica��es desktop e em WebGL ele apenas mant�m na tela inicial
     public void QuitButton()
     {
         if (!isDesktop)
@@ -98,8 +98,8 @@ public class MenuManager : MonoBehaviour
     //Fun��o de Continuar para prosseguir com o Jogo Pausado, apenas desativa o Pause;
     public void ContinuarBtn()
     {
-            volumeObject.SetActive(false);
-            ResumeGame();
+        volumeObject.SetActive(false);
+        ResumeGame();
     }
     //Verifica a entrada da Tecla "P", e executa um das fun�oes dependendo do estado de isPaused
     void Update()
@@ -128,20 +128,37 @@ public class MenuManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
-        
+
     }
     //Passa para o Proximo N�vel, caso haja um proximo nivel
     public void ProximoNivel()
     {
-        if (SceneManager.sceneCountInBuildSettings == SceneManager.GetActiveScene().buildIndex +1)
+        if (SceneManager.sceneCountInBuildSettings == SceneManager.GetActiveScene().buildIndex + 1)
         {
             Debug.Log("Acabou os Niveis, mas logo traremos mais!");
         }
-        else 
+        else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
-            
+
         }
-        
+
     }
+    public void Play()
+    {
+        SceneManager.LoadScene(3);
+        saveManager.ChangeSoundMusic(3);
+        Debug.Log("O jogo Iniciou");
+    }
+    public void End()
+    {
+        SceneManager.LoadScene(4);
+        saveManager.ChangeSoundMusic(4);
+        Debug.Log("O jogo Iniciou");
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
