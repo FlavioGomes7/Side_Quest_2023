@@ -637,7 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   somInGameMusic:
   - {fileID: 8300000, guid: 65f4cc4dbde194b4aadbed3a9ffb134c, type: 3}
-  - {fileID: 8300000, guid: 8ae34155b0671924185550c1ce882b69, type: 3}
+  - {fileID: 8300000, guid: 348a4241e2ccdfe42a966c4d260354e1, type: 3}
 --- !u!4 &453644768
 Transform:
   m_ObjectHideFlags: 0
