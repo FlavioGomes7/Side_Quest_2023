@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pontuacao;
     private string arvoreNameDefault;
     private List<(GameObject, bool)> arvoresDerrubadasList;
+    private bool todosNulos;
 
     private void Start()
     {
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        todosNulos = inimigosCena.TrueForAll(item => item == null);
+        CondicaoVitoria();
         // Verificar apenas quando um objeto for removido
     }
 
@@ -54,8 +56,9 @@ public class GameManager : MonoBehaviour
     public void InimigosMorto()
     {
         VerificarInimigosDestruidos();
+        // Remover objetos faltantes da lista
         // Verificar condições de vitória e derrota
-        CondicaoVitoria();
+        //CondicaoVitoria();
     }
 
     private void VerificarArvoresDerrubadas()
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void VerificarInimigosDestruidos()
     {
+
         inimigosDestruidosPlayer++;
         SetPontuacao();
     }
@@ -98,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     private void CondicaoVitoria()
     {
-        if (inimigosDestruidosPlayer == inimigosCena.Count && (arvoresDerrubadas / (float)arvoresCena.Count) < percentualArvoresDerrubadas)
+        if (todosNulos && (arvoresDerrubadas / (float)arvoresCena.Count) < percentualArvoresDerrubadas)
         {
             Time.timeScale = 0f;
             menuVitoria.SetActive(true);
