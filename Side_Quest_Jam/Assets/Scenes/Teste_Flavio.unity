@@ -183,6 +183,7 @@ MonoBehaviour:
   bullet: {fileID: 8484846168353704796, guid: b90f68d36031ca240a48cff539a55822, type: 3}
   bulletPos: {fileID: 672014268}
   timerMax: 5
+  distanceMin: 0
 --- !u!212 &4981598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -725,6 +726,7 @@ MonoBehaviour:
   bullet: {fileID: 8484846168353704796, guid: b90f68d36031ca240a48cff539a55822, type: 3}
   bulletPos: {fileID: 1909654430}
   timerMax: 5
+  distanceMin: 0
 --- !u!212 &323041647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3800,6 +3802,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 823010290}
+    - target: {fileID: 4438793362124648991, guid: 60c430e0c34b558499c0d93617f5a70e, type: 3}
+      propertyPath: enemyDestroy
+      value: 
+      objectReference: {fileID: 794518709150295211, guid: 25f57e97cd1892b43a881a65c8dd935b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c430e0c34b558499c0d93617f5a70e, type: 3}
 --- !u!1001 &4887487002975270757

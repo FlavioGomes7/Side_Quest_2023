@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private SaveManager saveManager;
     //-
     [SerializeField] private float speed; // Velocidade de movimento do objeto
+    [SerializeField] private GameObject enemyDestroy;
     [SerializeField] private GameObject[] Inimigo;
     private AudioSource playerAtackAudio;
     //(Jow - adiçao)
@@ -101,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator AttackAnim()
     {
         //Destroy(EnemyCloser());
+        Instantiate(enemyDestroy, inimigoMorto.transform.position, Quaternion.identity);
+        Destroy(inimigoMorto);
         yield return new WaitForSecondsRealtime(0.6f);
         Destroy(inimigoMorto);
         animator.SetBool("IsAttacking", false);

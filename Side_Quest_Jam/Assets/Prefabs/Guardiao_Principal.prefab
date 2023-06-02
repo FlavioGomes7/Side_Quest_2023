@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
+  enemyDestroy: {fileID: 794518709150295211, guid: 25f57e97cd1892b43a881a65c8dd935b, type: 3}
   Inimigo: []
   spawnPoint: {fileID: 0}
 --- !u!61 &4438793362124648976

@@ -14,6 +14,8 @@ public class Lenhador : MonoBehaviour
     public NavMeshAgent agent;
     public Transform target;
 
+    [SerializeField] private GameObject enemyDestroy;
+
     private Vector2 targetPosition;
     private Vector2 fowardNew;
 
@@ -41,10 +43,13 @@ public class Lenhador : MonoBehaviour
             Collider2D colisor = Physics2D.OverlapCircle(this.transform.position, this.raioVisao, treeLayer);
             if (colisor.CompareTag("Arvore"))
             {
+                Instantiate(enemyDestroy, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }     
     }
+    
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -39,10 +39,11 @@ public class EnemyShoot : MonoBehaviour
         }   
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
+
 
 
 

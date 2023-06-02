@@ -153,6 +153,7 @@ MonoBehaviour:
   raioVisao: 0.3
   agent: {fileID: 4346912384180843249}
   target: {fileID: 0}
+  enemyDestroy: {fileID: 794518709150295211, guid: 25f57e97cd1892b43a881a65c8dd935b, type: 3}
   treeLayer:
     serializedVersion: 2
     m_Bits: 64
